@@ -8,8 +8,8 @@ const Forecast = ({ city, handleInputChange, handleSubmit }) => {
         <div className="forecast"> 
             <div className="row">   
                 <div className="col-sm-2">
-                    <div className="card"> <h2>Forecast</h2>
-                        <div className="card-body">
+                    <div className="card-forecast"> <h2>Forecast</h2>
+                        <div className="card-body-forecast">
 
                         </div>
                     </div>
