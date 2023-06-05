@@ -47,10 +47,12 @@ function App() {
   };
   
 
-  console.log(weather);
+   const handleImputChange = (event) => {
+    setCity(event.target.value);
+   };
 
-
-
+  const handleSubmit = (event) => {
+    event.preventDefault();}
 
 
 
@@ -74,14 +76,18 @@ function App() {
       <h2>Weather in London</h2>
       
       <h3>Today is {moment().format('dddd, MMMM Do YYYY')}</h3>
-
+      {/* <h3>Current time is {moment().format('LT')}</h3> */}
+      <h3>Current temperature is {weather?.main?.temp}°C for {city}</h3>
+    
 
 
       <Form 
       city={city}
+      handleInputChange={handleImputChange}
+      handleSubmit={handleSubmit}
        />
 
-
+ 
 
       <WeatherCard />
       <Forecast />
