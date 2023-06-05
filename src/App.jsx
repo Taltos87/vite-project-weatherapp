@@ -1,27 +1,34 @@
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import moment from 'moment/moment'
+import axios from 'axios'
+import Form from './components/Form'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-
+ 
   return (
     <>
      <h1>Shecodes Weather App</h1>
-      <div>
+      {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-      </div>
-     
+
+      </div> */}
+      
+      <Form />
+      
 
       <div className="card">
-    
+     
       </div>
+      
       <div>
       <a href={`https://github.com/Taltos87/my-weather-app`} >Open Source Code</a> 
         <p> by Ana-Maria Paraschivu </p>
