@@ -4,7 +4,10 @@ import viteLogo from '/vite.svg'
 import moment from 'moment/moment'
 import axios from 'axios'
 import Form from './components/Form'
+import WeatherCard from './components/WeatherCard'
+import Forecast from './components/Forecast'
 import './App.css'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,7 +27,8 @@ function App() {
 
       <h2>Weather in London</h2>
       <Form />
-      
+      <WeatherCard />
+      <Forecast />
 
       <div className="card">
      

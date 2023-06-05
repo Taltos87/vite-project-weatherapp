@@ -1,7 +1,9 @@
-import React from 'react'
-import '../styles/WeatherCard.css'
+import React from "react";
 
-const WeatherCard = ({ weatherData }) => {
+import  "../styles/Forecast.css";
+
+
+const Forecast = () => {
   return (
     <div className="card">
       <div className="card-body">
@@ -11,6 +13,4 @@ const WeatherCard = ({ weatherData }) => {
         </div>
     </div>
   );
-};
-
-export default WeatherCard;
+}
