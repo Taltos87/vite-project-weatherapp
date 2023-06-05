@@ -1,16 +1,23 @@
 import React from "react";
+import { useState } from "react";
+import { Button } from "bootstrap";
+import "../styles/Forecast.css";
 
-import  "../styles/Forecast.css";
+const Forecast = ({ city, handleInputChange, handleSubmit }) => {
+    return (
+        <div className="forecast"> 
+            <div className="row">   
+                <div className="col-sm-2">
+                    <div className="card"> <h2>Forecast</h2>
+                        <div className="card-body">
+
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>  
+    );
+};
 
 
-const Forecast = () => {
-  return (
-    <div className="card">
-      <div className="card-body">
-        <h2 className="card-title">WeatherData</h2>
-        <p>Tempreture: </p>
-        <p>Humidity: </p>
-        </div>
-    </div>
-  );
-}
+export default Forecast;
