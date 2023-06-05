@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import { Button } from 'bootstrap'
-import  './Form.css'
-import "bootstrap/scss/bootstrap";
+import  '../styles/Form.css'
+import '../assets/react.svg'
+// import "bootstrap/scss/bootstrap"
 
 export default function Form(props) {
   return ( 
