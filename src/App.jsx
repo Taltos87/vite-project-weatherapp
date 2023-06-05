@@ -18,6 +18,46 @@ function App() {
   const [forecast, setForecast] = useState(null);
   const [error, setError] = useState(``);
 
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        fetchWeatherDatabyCoords (latitude, longitude);
+      });
+    } else {
+      {setError("Geolocation is not supported by this browser.");
+    }
+  };
+  }, []);
+
+
+    const fetchWeatherDatabyCoords = async (latitude, longitude) => {
+     try {
+       const response = await fetch(
+        `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+        );
+       setWeather(response.data);
+
+     const data = await response.json();
+     setWeatherData(data);
+   } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
+  console.log(weather);
+
+
+
+
+
+
+
+
+
+
   return (
     <>
      <h2>Shecodes Weather App</h2>
@@ -34,7 +74,7 @@ function App() {
       <h2>Weather in London</h2>
       
       <h3>Today is {moment().format('dddd, MMMM Do YYYY')}</h3>
-      
+
 
 
       <Form 
