@@ -11,8 +11,8 @@ function App() {
  
   return (
     <>
-     <h1>Shecodes Weather App</h1>
-      {/* <div>
+     <h2>Shecodes Weather App</h2>
+      <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -20,8 +20,9 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
 
-      </div> */}
-      
+      </div>
+
+      <h2>Weather in London</h2>
       <Form />
       
 
