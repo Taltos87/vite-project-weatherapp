@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'bootstrap'
 import  '../styles/Form.css'
 import '../assets/react.svg'
-// import "bootstrap/scss/bootstrap"
+
 
 const Form = ({ city, handleInputChange, handleSubmit }) => {
   return (

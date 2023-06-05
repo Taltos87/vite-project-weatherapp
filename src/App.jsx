@@ -37,12 +37,16 @@ function App() {
        const response = await fetch(
         `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
         );
-       setWeather(response.data);
-
+        if (!response.ok) {
+          throw new Error('Something went wrong!');
+        }
      const data = await response.json();
-     setWeatherData(data);
+     setWeatherData(respose.data);
+     setError('');
    } catch (error) {
-      console.log(error);
+    setWeatherData(null);
+    setError('Something went wrong!');
+     
     }
   };
   
@@ -52,7 +56,11 @@ function App() {
    };
 
   const handleSubmit = (event) => {
-    event.preventDefault();}
+    event.preventDefault();
+  
+  
+  
+  }
 
 
 
