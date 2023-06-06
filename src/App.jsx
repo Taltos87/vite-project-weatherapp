@@ -78,6 +78,7 @@ function App() {
     setError('City not found!');
   }
 };
+console.log(weatherData);
 
   return (
     <>
@@ -90,29 +91,26 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-      </div>
+        <img
+            src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg"
+            className="logo bootstrap"
+            alt="Bootstrap logo"
+          />
+        </div>
+  
 
       
        <div>
-
+       
+         <Form />
        {weatherData && (
   <div>
-    <h3>Today is {moment().format('dddd, MMMM Do YYYY')}</h3>
-    <h3>Current time is {moment().format('LT')}</h3>
-    <h3>Current temperature is {Math.round(weatherData?.main?.temp)}°C for {city}</h3>
+    <p>Today is {moment().format('dddd, MMMM Do YYYY')}</p>
+    <p>Current time is {moment().format('LT')}</p>
+
     <WeatherCard weatherData={weatherData} />
   </div>
 )}
-
-      <Form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter city"
-          onChange={handleInputChange}
-          value={city}
-        />
-        <button type="submit">Search</button>
-      </Form>
 
        {error && <p className=''>{error}</p>}
       <Forecast forecast={forecast} />
