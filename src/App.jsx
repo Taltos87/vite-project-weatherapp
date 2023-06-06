@@ -54,6 +54,7 @@ function App() {
     }
   };
   
+  
 
    const handleInputChange = (event) => {
     setCity(event.target.value);
@@ -95,13 +96,13 @@ function App() {
        <div>
 
        {weatherData && (
-        <div>
-          <h3>Today is {moment().format('dddd, MMMM Do YYYY')}</h3>
-          <h3>Current time is {moment().format('LT')}</h3>
-          <h3>Current temperature is {weather?.main?.temp}°C for {city}</h3>
-          <WeatherCard weatherData={weatherData} />
-        </div>
-      )}
+  <div>
+    <h3>Today is {moment().format('dddd, MMMM Do YYYY')}</h3>
+    <h3>Current time is {moment().format('LT')}</h3>
+    <h3>Current temperature is {Math.round(weatherData?.main?.temp)}°C for {city}</h3>
+    <WeatherCard weatherData={weatherData} />
+  </div>
+)}
 
       <Form onSubmit={handleSubmit}>
         <input
@@ -114,7 +115,7 @@ function App() {
       </Form>
 
        {error && <p className=''>{error}</p>}
-      {/* <Forecast forecast={forecast} /> */}
+      <Forecast forecast={forecast} />
         
       </div>
         <div>
