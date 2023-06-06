@@ -101,9 +101,10 @@ console.log(weatherData);
 
       
        <div>
-       
-         <Form />
-       {weatherData && (
+
+   <Form city={city} handleInputChange={handleInputChange} handleSubmit={handleSubmit} />
+   
+   {weatherData && (
   <div>
     <p>Today is {moment().format('dddd, MMMM Do YYYY')}</p>
     <p>Current time is {moment().format('LT')}</p>
@@ -112,8 +113,9 @@ console.log(weatherData);
   </div>
 )}
 
-       {error && <p className=''>{error}</p>}
-      <Forecast forecast={forecast} />
+  {error && <p className=''>{error}</p>}
+     
+ <Forecast forecast={forecast} />
         
       </div>
         <div>

@@ -19,7 +19,7 @@ const Form = ({ city, handleInputChange, handleSubmit }) => {
         />
       </div>
         <button className="btn btn-primary" type="submit">
-          Seach City
+          Search City
         </button>
     </form>
   );
