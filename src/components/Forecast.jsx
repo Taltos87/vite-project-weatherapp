@@ -1,3 +1,5 @@
+
+export default Forecast;
 import React from 'react';
 import "../styles/Forecast.css";
 
