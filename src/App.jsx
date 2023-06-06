@@ -15,7 +15,7 @@ const API_KEY = '2bcda0ef514ca396d716955408357744';
 function App() {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
-  const [forecast, setForecast] = useState(null);
+  const [forecastData, setForecastData] = useState([]);
   const [error, setError] = useState(``);
 
 
@@ -110,13 +110,14 @@ console.log(weatherData);
     <p>Current time is {moment().format('LT')}</p>
 
     <WeatherCard weatherData={weatherData} />
+
+
+    {forecastData.length > 0 && <Forecast forecastData={forecastData} />}
+
   </div>
 )}
 
-  {error && <p className=''>{error}</p>}
-     
- <Forecast forecast={forecast} />
-        
+  {error && <p className=''>{error}</p>}    
       </div>
         <div>
             <a href={`https://github.com/Taltos87/my-weather-app`}>Open Source Code</a>
