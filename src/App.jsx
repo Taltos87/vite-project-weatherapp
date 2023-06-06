@@ -47,6 +47,13 @@ function App() {
         }
     const data = await response.json();
     setWeatherData(data);
+    // setForecastData(data.daily.slice(1, 8).map((day) => ({
+    //   date: moment.unix(day.dt).format('MMM D'),
+    //   temperature: day.temp.day,
+    //   weatherDescription: day.weather[0].description,
+    //   icon: `https://openweathermap.org/img/w/${day.weather[0].icon}.png`
+    // })));
+
      setError('');
    } catch (error) {
     setWeatherData(null);
@@ -108,12 +115,8 @@ console.log(weatherData);
   <div>
     <p>Today is {moment().format('dddd, MMMM Do YYYY')}</p>
     <p>Current time is {moment().format('LT')}</p>
-
     <WeatherCard weatherData={weatherData} />
-
-
     {forecastData.length > 0 && <Forecast forecastData={forecastData} />}
-
   </div>
 )}
 

@@ -1,7 +1,4 @@
 import React from 'react';
-import { useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from "bootstrap";
 import "../styles/Forecast.css";
 
 const Forecast = ({ forecastData }) => {
