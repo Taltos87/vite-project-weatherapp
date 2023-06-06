@@ -14,16 +14,17 @@ const API_KEY = '2bcda0ef514ca396d716955408357744';
 
 function App() {
   const [city, setCity] = useState('');
-  const [weather, setWeather] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [error, setError] = useState(``);
 
 
   useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition( async(position) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
         const { latitude, longitude } = position.coords;
-      await  fetchWeatherDatabyCoords (latitude, longitude);
+        fetchWeatherDataByCoords (latitude, longitude);
       },
       (error) => {
           console.log(error);
@@ -31,46 +32,45 @@ function App() {
         }
       );
     } else {
-      {setError("Geolocation is not supported by this browser.");
-    }
+      setError("Geolocation is not supported by this browser.");
   };
   }, []);
 
 
-    const fetchWeatherDatabyCoords = async (latitude, longitude) => {
+    const fetchWeatherDataByCoords = async (latitude, longitude) => {
      try {
        const response = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
         );
         if (!response.ok) {
-          throw new Error('Something went wrong!');
+          throw new Error('Something went wrong!'); 
         }
-     const data = await response.json();
-      setWeatherData(response.data);
+    const data = await response.json();
+    setWeatherData(data);
      setError('');
    } catch (error) {
     setWeatherData(null);
-    setError('Something went wrong!');
-     
+    setError('Something went wrong!');    
     }
   };
   
 
-   const handleImputChange = (event) => {
+   const handleInputChange = (event) => {
     setCity(event.target.value);
    };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+  
     try {
-   const resonse = await fetch (
-    `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+   const response = await fetch (
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
     );
     if (!response.ok) {
       throw new Error('City not found!');
     }
     const data = await response.json();
-    setWeatherData(respose.data);
+    setWeatherData(data);
     setError('');
   } catch (error) {
     setWeatherData(null);
@@ -78,16 +78,11 @@ function App() {
   }
 };
 
-console.log(weather);
-
-
-
-
   return (
     <>
      <h2>Shecodes Weather App</h2>
-      {/* <h3>React + Vite + Bootstrap</h3> */}
-      <div>
+      <h3>React + Vite + Bootstrap</h3> 
+       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -96,36 +91,39 @@ console.log(weather);
         </a>
       </div>
 
-      <h2>Weather in London</h2>
       
-      <h3>Today is {moment().format('dddd, MMMM Do YYYY')}</h3>
-      {/* <h3>Current time is {moment().format('LT')}</h3> */}
-      <h3>Current temperature is {weather?.main?.temp}°C for {city}</h3>
-    
+       <div>
 
+       {weatherData && (
+        <div>
+          <h3>Today is {moment().format('dddd, MMMM Do YYYY')}</h3>
+          <h3>Current time is {moment().format('LT')}</h3>
+          <h3>Current temperature is {weather?.main?.temp}°C for {city}</h3>
+          <WeatherCard weatherData={weatherData} />
+        </div>
+      )}
 
-      <Form 
-      city={city}
-      handleInputChange={handleImputChange}
-      handleSubmit={handleSubmit}
-       />
+      <Form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter city"
+          onChange={handleInputChange}
+          value={city}
+        />
+        <button type="submit">Search</button>
+      </Form>
 
- 
-
-      <WeatherCard weatherData={weather} />
-      <Forecast forecast={forecast}/>
-
-      <div className="card">
-     
+       {error && <p className=''>{error}</p>}
+      {/* <Forecast forecast={forecast} /> */}
+        
       </div>
-      
-      <div>
-      <a href={`https://github.com/Taltos87/my-weather-app`} >Open Source Code</a> 
-        <p> by Ana-Maria Paraschivu </p>
+        <div>
+            <a href={`https://github.com/Taltos87/my-weather-app`}>Open Source Code</a>
+            <p> by Ana-Maria Paraschivu </p>
 
-      </div>
+          </div>
     </>
   )
-}
+};
 
 export default App
