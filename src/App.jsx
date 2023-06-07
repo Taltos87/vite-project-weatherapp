@@ -15,7 +15,7 @@ const API_KEY = '2bcda0ef514ca396d716955408357744';
 function App() {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
-  const [forecast, setForecast] = useState(null);
+  const [forecastData, setForecastData] = useState([]);
   const [error, setError] = useState(``);
 
 
@@ -40,15 +40,25 @@ function App() {
     const fetchWeatherDataByCoords = async (latitude, longitude) => {
      try {
        const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+    
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
         );
         if (!response.ok) {
           throw new Error('Something went wrong!'); 
         }
-    const data = await response.json();
-    setWeatherData(data);
+        const data = await response.json();
+        setWeatherData(data.current);
+         console.log(data);
+    setForecastData(data.daily.slice(1, 8).map((day) => ({
+      date: moment.unix(day.dt).format('MMM D'),
+      temperature: day.temp.day,
+      weatherDescription: day.weather[0].description,
+      icon: `https://openweathermap.org/img/w/${day.weather[0].icon}.png`
+    })));
+    console.log(data);
      setError('');
    } catch (error) {
+    console.log(error);
     setWeatherData(null);
     setError('Something went wrong!');    
     }
@@ -65,7 +75,7 @@ function App() {
   
     try {
    const response = await fetch (
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+    `https://api.openweathermap.org/data/2.5/onecall?q=${city}&appid=${API_KEY}&units=metric`
     );
     if (!response.ok) {
       throw new Error('City not found!');
@@ -108,15 +118,12 @@ console.log(weatherData);
   <div>
     <p>Today is {moment().format('dddd, MMMM Do YYYY')}</p>
     <p>Current time is {moment().format('LT')}</p>
-
     <WeatherCard weatherData={weatherData} />
+    {forecastData && <Forecast forecastData={forecastData} />}
   </div>
 )}
 
-  {error && <p className=''>{error}</p>}
-     
- <Forecast forecast={forecast} />
-        
+  {error && <p className=''>{error}</p>}    
       </div>
         <div>
             <a href={`https://github.com/Taltos87/my-weather-app`}>Open Source Code</a>
