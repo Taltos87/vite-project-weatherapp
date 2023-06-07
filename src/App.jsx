@@ -46,6 +46,7 @@ function App() {
         if (!response.ok) {
           throw new Error('Something went wrong!'); 
         }
+<<<<<<< HEAD
     const data = await response.json();
     setWeatherData(data.current);
 //     console.log(data);
@@ -57,6 +58,18 @@ function App() {
 // })));
 // console.log(data);
     setWeatherData(data);
+=======
+        const data = await response.json();
+        setWeatherData(data.current);
+         console.log(data);
+    setForecastData(data.daily.slice(1, 8).map((day) => ({
+      date: moment.unix(day.dt).format('MMM D'),
+      temperature: day.temp.day,
+      weatherDescription: day.weather[0].description,
+      icon: `https://openweathermap.org/img/w/${day.weather[0].icon}.png`
+    })));
+    console.log(data);
+>>>>>>> 5acc44f (there is an issue with returning {city}submit)
      setError('');
    } catch (error) {
     console.log(error);
@@ -120,10 +133,14 @@ console.log(weatherData);
     <p>Today is {moment().format('dddd, MMMM Do YYYY')}</p>
     <p>Current time is {moment().format('LT')}</p>
     <WeatherCard weatherData={weatherData} />
+<<<<<<< HEAD
 
 
     {forecastData.length > 0 && <Forecast forecastData={forecastData} />}
 
+=======
+    {forecastData && <Forecast forecastData={forecastData} />}
+>>>>>>> 5acc44f (there is an issue with returning {city}submit)
   </div>
 )}
 
