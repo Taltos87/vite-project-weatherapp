@@ -40,22 +40,25 @@ function App() {
     const fetchWeatherDataByCoords = async (latitude, longitude) => {
      try {
        const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+    
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
         );
         if (!response.ok) {
           throw new Error('Something went wrong!'); 
         }
-    const data = await response.json();
-    setWeatherData(data);
-    // setForecastData(data.daily.slice(1, 8).map((day) => ({
-    //   date: moment.unix(day.dt).format('MMM D'),
-    //   temperature: day.temp.day,
-    //   weatherDescription: day.weather[0].description,
-    //   icon: `https://openweathermap.org/img/w/${day.weather[0].icon}.png`
-    // })));
-
+        const data = await response.json();
+        setWeatherData(data.current);
+         console.log(data);
+    setForecastData(data.daily.slice(1, 8).map((day) => ({
+      date: moment.unix(day.dt).format('MMM D'),
+      temperature: day.temp.day,
+      weatherDescription: day.weather[0].description,
+      icon: `https://openweathermap.org/img/w/${day.weather[0].icon}.png`
+    })));
+    console.log(data);
      setError('');
    } catch (error) {
+    console.log(error);
     setWeatherData(null);
     setError('Something went wrong!');    
     }
@@ -72,7 +75,7 @@ function App() {
   
     try {
    const response = await fetch (
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+    `https://api.openweathermap.org/data/2.5/onecall?q=${city}&appid=${API_KEY}&units=metric`
     );
     if (!response.ok) {
       throw new Error('City not found!');
@@ -116,7 +119,7 @@ console.log(weatherData);
     <p>Today is {moment().format('dddd, MMMM Do YYYY')}</p>
     <p>Current time is {moment().format('LT')}</p>
     <WeatherCard weatherData={weatherData} />
-    {forecastData.length > 0 && <Forecast forecastData={forecastData} />}
+    {forecastData && <Forecast forecastData={forecastData} />}
   </div>
 )}
 
