@@ -92,7 +92,7 @@ console.log(weatherData);
 
   return (
     <>
-     <h2>Shecodes Weather App</h2>
+    
       <h3>React + Vite + Bootstrap</h3> 
        <div>
         <a href="https://vitejs.dev" target="_blank">
@@ -119,14 +119,10 @@ console.log(weatherData);
     <p>Today is {moment().format('dddd, MMMM Do YYYY')}</p>
     <p>Current time is {moment().format('LT')}</p>
     <WeatherCard weatherData={weatherData} />
-<<<<<<< HEAD
 
 
     {forecastData.length > 0 && <Forecast forecastData={forecastData} />}
 
-=======
-    {forecastData && <Forecast forecastData={forecastData} />}
->>>>>>> 5acc44f (there is an issue with returning {city}submit)
   </div>
 )}
 
