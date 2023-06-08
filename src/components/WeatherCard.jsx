@@ -6,7 +6,7 @@ const WeatherCard = ({ weatherData }) => {
   return (
     <div className="card">
       <div className="card-body-weather">
-      <h2 className='card-title'>{weatherData.dt}</h2>
+      <h2 className='card-title'>{weatherData.data}</h2>
         <img src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`} alt='weather icon' />
         <p> Tempreture: {Math.round(weatherData.temp)}°C</p>
         <p>Humidity: {weatherData.humidity}%</p>

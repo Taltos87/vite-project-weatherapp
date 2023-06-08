@@ -48,8 +48,8 @@ function App() {
         }
         const data = await response.json();
         setWeatherData(data.current);
-         console.log(data);
-    setForecastData(data.daily.slice(1, 8).map((day) => ({
+        
+      setForecastData(data.daily.slice(1, 8).map((day) => ({
       date: moment.unix(day.dt).format('MMM D'),
       temperature: day.temp.day,
       weatherDescription: day.weather[0].description,
@@ -70,7 +70,7 @@ function App() {
     setCity(event.target.value);
    };
 
-  const handleSubmit = async (event) => {
+   const handleSubmit = async (event) => {
     event.preventDefault();
   
     try {
@@ -88,7 +88,7 @@ function App() {
     setError('City not found!');
   }
 };
-console.log(weatherData);
+// console.log(weatherData);
 
   return (
     <>
