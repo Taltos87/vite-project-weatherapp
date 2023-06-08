@@ -46,19 +46,6 @@ function App() {
         if (!response.ok) {
           throw new Error('Something went wrong!'); 
         }
-<<<<<<< HEAD
-    const data = await response.json();
-    setWeatherData(data.current);
-//     console.log(data);
-// setForecastData(data.daily.slice(1, 8).map((day) => ({
-//  date: moment.unix(day.dt).format('MMM D'),
-//  temperature: day.temp.day,
-//  weatherDescription: day.weather[0].description,
-//  icon: `https://openweathermap.org/img/w/${day.weather[0].icon}.png`
-// })));
-// console.log(data);
-    setWeatherData(data);
-=======
         const data = await response.json();
         setWeatherData(data.current);
          console.log(data);
@@ -69,7 +56,6 @@ function App() {
       icon: `https://openweathermap.org/img/w/${day.weather[0].icon}.png`
     })));
     console.log(data);
->>>>>>> 5acc44f (there is an issue with returning {city}submit)
      setError('');
    } catch (error) {
     console.log(error);
