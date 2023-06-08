@@ -72,23 +72,21 @@ function App() {
 
    const handleSubmit = async (event) => {
     event.preventDefault();
-  
     try {
-   const response = await fetch (
-    `https://api.openweathermap.org/data/2.5/onecall?q=${city}&appid=${API_KEY}&units=metric`
-    );
-    if (!response.ok) {
-      throw new Error('City not found!');
-    }
-    const data = await response.json();
-    setWeatherData(data);
-    setError('');
-  } catch (error) {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+      );
+      if (!response.ok) {
+        throw new Error('City not found');
+      }
+      const data = await response.json();
+      setWeatherData(data);
+      setError('');
+    } catch (error) {
     setWeatherData(null);
     setError('City not found!');
-  }
-};
-// console.log(weatherData);
+    }
+  };
 
   return (
     <>
