@@ -81,24 +81,43 @@ function App() {
     setCity(event.target.value);
    };
 
-  const handleSubmit = async (event) => {
+   const handleSubmit = async (event) => {
     event.preventDefault();
-  
     try {
-   const response = await fetch (
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
-    );
-    if (!response.ok) {
-      throw new Error('City not found!');
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+      );
+      if (!response.ok) {
+        throw new Error('City not found!');
+      }
+      const data = await response.json();
+      setWeatherData(data);
+  
+      const forecastResponse = await fetch(
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=current,minutely,hourly,alerts&appid=${API_KEY}&units=metric`
+      );
+      if (!forecastResponse.ok) {
+        throw new Error('Unable to retrieve forecast data');
+      }
+      const forecastData = await forecastResponse.json();
+  
+      setForecastData(
+        forecastData.daily.slice(1, 8).map((day) => ({
+          date: moment.unix(day.dt).format('ddd, MMM D'),
+          temperature: day.temp.day,
+          minTemperature: day.temp.min,
+          maxTemperature: day.temp.max,
+          weatherDescription: day.weather[0].description,
+          icon: `https://openweathermap.org/img/w/${day.weather[0].icon}.png`,
+        }))
+      );
+      setError('');
+    } catch (error) {
+      setWeatherData(null);
+      setForecastData([]);
+      setError(error.message);
     }
-    const data = await response.json();
-    setWeatherData(data);
-    setError('');
-  } catch (error) {
-    setWeatherData(null);
-    setError('City not found!');
-  }
-};
+  };
 
   return (
     <>
