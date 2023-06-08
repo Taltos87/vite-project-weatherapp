@@ -11,8 +11,6 @@ const WeatherCard = ({ weatherData }) => {
         <p> Tempreture: {Math.round(weatherData.main.temp)}°C</p>
         <p>Humidity: {weatherData.main.humidity}%</p>
         <p>Wind: {Math.round(weatherData.wind.speed)} km/h</p>
-       
-    
         <p>Weather: {weatherData.weather[0].description}</p>
         
         </div>
