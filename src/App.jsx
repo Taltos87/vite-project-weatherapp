@@ -99,7 +99,6 @@ function App() {
     setError('City not found!');
   }
 };
-// console.log(weatherData);
 
   return (
     <>
