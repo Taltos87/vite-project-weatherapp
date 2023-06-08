@@ -47,12 +47,26 @@ function App() {
         }
     const data = await response.json();
     setWeatherData(data);
-    // setForecastData(data.daily.slice(1, 8).map((day) => ({
-    //   date: moment.unix(day.dt).format('MMM D'),
-    //   temperature: day.temp.day,
-    //   weatherDescription: day.weather[0].description,
-    //   icon: `https://openweathermap.org/img/w/${day.weather[0].icon}.png`
-    // })));
+
+    
+    const forecastResponse = await fetch(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${API_KEY}&units=metric`
+    );
+    if (!forecastResponse.ok) {
+      throw new Error('Unable to retrieve forecast data');
+    }
+    const forecastData = await forecastResponse.json();
+
+    setForecastData(
+      forecastData.daily.slice(1, 8).map((day) => ({
+        date: moment.unix(day.dt).format('ddd, MMM D'),
+        temperature: day.temp.day,
+        minTemperature: day.temp.min,
+        maxTemperature: day.temp.max,
+        weatherDescription: day.weather[0].description,
+        icon: `https://openweathermap.org/img/w/${day.weather[0].icon}.png`
+      }))
+    );
 
      setError('');
    } catch (error) {
