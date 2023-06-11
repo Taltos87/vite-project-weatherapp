@@ -8,6 +8,20 @@ form {
     padding: 0 1rem;
     
 }
+.input-group mb-3 {
+    width: 50%;
+}
+ 
+.form-control {
+    background-color: #8980FF;
+    color: navy;
+    font-size: large;
+}
+.form-control:focus {
+    background-color: #64C5B7;
+    color: navy;
+    font-size: large;
+}
 .btn-primary {
     padding: 0.5rem 1rem;
     border: none;
