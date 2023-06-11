@@ -9,7 +9,7 @@ import '../assets/react.svg'
 const Form = ({ city, handleInputChange, handleSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <div className="input-group mb-3">
+      <div className="input-group mb-9">
         <input
           type="text"
           className="form-control"

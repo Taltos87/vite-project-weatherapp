@@ -122,7 +122,7 @@ function App() {
   return (
     <>
       
-      <h3>React + Vite + Bootstrap</h3> 
+      <h3>   Vite + React + Bootstrap</h3> 
        <div  className='icons'>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
