@@ -1,9 +1,9 @@
 #root {
   background: linear-gradient(180deg, navy , royalblue, dodgerblue, #b3b3ff);
-   /* #5656b3, #deb2e6); */
+  background-size: 400% 400%;
   background-repeat: no-repeat;
   background-size: cover;
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
