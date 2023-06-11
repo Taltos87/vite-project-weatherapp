@@ -5,7 +5,7 @@
   border: none;
   border-radius: 25px;
   box-sadow: 0 0 10px rgba(0,0,0,0.2);
-  background: linear-gradient(180deg, #5656b3, #deb2e6);
-  color: aliceblue;
+  background: linear-gradient(40deg,  #DACDA6, #8980FF, #64C5B7);  
+  color: darkblue;
   font: 1em sans-serif;
 }
