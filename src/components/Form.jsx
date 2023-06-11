@@ -17,10 +17,10 @@ const Form = ({ city, handleInputChange, handleSubmit }) => {
           value={city}
           onChange={handleInputChange}
         />
-      </div>
         <button className="btn btn-primary" type="submit">
           Search City
         </button>
+      </div>
     </form>
   );
 };

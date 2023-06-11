@@ -1,6 +1,11 @@
 .card{
+  margin: 0 auto; 
+  width: 50%; 
+  display: flex; 
   border: none;
-  border-radius: 10px;
+  border-radius: 25px;
   box-sadow: 0 0 10px rgba(0,0,0,0.2);
-  background-color: aqua;
+  background: linear-gradient(180deg, #5656b3, #deb2e6);
+  color: aliceblue;
+  font: 1em sans-serif;
 }

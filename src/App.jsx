@@ -123,7 +123,7 @@ function App() {
     <>
       
       <h3>React + Vite + Bootstrap</h3> 
-       <div>
+       <div  className='icons'>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -145,8 +145,10 @@ function App() {
    
    {weatherData && (
   <div>
+    <div className='current-data'>
     <p>Today is {moment().format('dddd, MMMM Do YYYY')}</p>
     <p>Current time is {moment().format('LT')}</p>
+    </div>
     <WeatherCard weatherData={weatherData} />
     {forecastData.length > 0 && <Forecast forecastData={forecastData} />}
   </div>
@@ -154,7 +156,7 @@ function App() {
 
   {error && <p className=''>{error}</p>}    
       </div>
-        <div>
+        <div className='userID'>
             <a href={`https://github.com/Taltos87/my-weather-app`}>Open Source Code</a>
             <p> by Ana-Maria Paraschivu </p>
 
