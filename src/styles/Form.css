@@ -12,9 +12,13 @@ form {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 0.5rem;
-    background: linear-gradient(40deg,  #DACDA6, #8980FF, #64C5B7);  
+    background: linear-gradient(40deg,  darkblue, #8980FF, #64C5B7);  
     color: navy;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
+}
+.btn-primary:hover {
+    background: linear-gradient(40deg,  #8980FF, #64C5B7, darkblue);  
+    color: white;
 }

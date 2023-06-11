@@ -1,5 +1,5 @@
 #root {
-  background: linear-gradient(180deg, #8980FF , #CBC1D3, #64C5B7);
+  background: linear-gradient(180deg, navy , royalblue, dodgerblue, #b3b3ff);
    /* #5656b3, #deb2e6); */
   background-repeat: no-repeat;
   background-size: cover;
@@ -47,7 +47,7 @@
 
 h3 {
   margin-top: 1rem;
-  color :rgb(30, 45, 135);
+  color :#61dafbaa;
 }
 .icons {
   margin: top 1em;
