@@ -9,3 +9,7 @@
   color: darkblue;
   font: 1em sans-serif;
 }
+.card:hover{
+  background: linear-gradient(40deg,  #8980FF, #64C5B7, royalblue);  
+  color: white;
+}
