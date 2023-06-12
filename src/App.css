@@ -11,7 +11,7 @@
 }
  html {
   min-height: 100%; }
-  
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -75,4 +75,44 @@ h3 {
   font-size: medium;
   color: navy;
   border-top: 2rem;
+}
+
+
+
+.newForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 50px auto;
+  padding: 0 1rem;
+  
+}
+.input-group mb-9 {
+  width: 50%;
+}
+
+.form-control {
+  background-color: #8980FF;
+  color: navy;
+  font-size: large;
+}
+.form-control:focus {
+  background-color: #64C5B7;
+  color: navy;
+  font-size: large;
+}
+.btn-primary {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: linear-gradient(40deg,  darkblue, #8980FF, #64C5B7);  
+  color: navy;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: linear-gradient(40deg,  #8980FF, #64C5B7, darkblue);  
+  color: white;
 }
