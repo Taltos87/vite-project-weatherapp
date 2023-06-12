@@ -8,7 +8,7 @@ const WeatherCard = ({ weatherData }) => {
       <div className="card-body-weather">
       <h2 className='card-title'>{weatherData.name }</h2>
         <img src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`} alt='weather icon' />
-        <p> Tempreture: {Math.round(weatherData.main.temp)}°C</p>
+        <p> Temperature: {Math.round(weatherData.main.temp)}°C</p>
         <p>Humidity: {weatherData.main.humidity}%</p>
         <p>Wind: {Math.round(weatherData.wind.speed)} km/h</p>
         <p>Weather: {weatherData.weather[0].description}</p>
